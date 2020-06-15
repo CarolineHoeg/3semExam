@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
-import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 
@@ -43,11 +42,13 @@ export function Header({ isLoggedIn, loginMsg, username, roles, setSearchResult 
 	};
 
 	return (
-		<>
-			<Navbar bg="dark" variant="dark">
+		<ul className="header">
+			<li>
 				<NavLink exact activeClassName="active" to="/">
 					Home
 				</NavLink>
+			</li>
+			<li>
 				<Form inline className="searchform" onSubmit={doSearch}>
 					<FormControl type="text" className="mr-sm-2 search"
 						placeholder="Search movietitle"
@@ -55,15 +56,13 @@ export function Header({ isLoggedIn, loginMsg, username, roles, setSearchResult 
 						onChange={onChange} />
 					<Button variant="outline-info" onClick={doSearch}>Search</Button>
 				</Form>
-				<Nav className="mr-auto">
-					{isLoggedIn && <React.Fragment>{renderRoleButton(roles)}</React.Fragment>}
-					<Nav.Link>
-						<NavLink activeClassName="active" to="/login-out">
-							<p className="headerText">{loginMsg}</p>
-						</NavLink>
-					</Nav.Link>
-				</Nav>
-			</Navbar>
-		</>
+			</li>
+			<li>
+				{isLoggedIn && <React.Fragment>{renderRoleButton(roles)}</React.Fragment>}
+				<NavLink activeClassName="active" to="/login-out">
+					<p className="headerText">{loginMsg}</p>
+				</NavLink>
+			</li>
+		</ul >
 	);
 }
