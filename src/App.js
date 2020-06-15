@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header } from "./Header";
-import { Home } from "./Home";
-import { Login } from "./Login";
-import { User } from "./User";
-import { Admin } from "./Admin";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { User } from "./pages/User";
+import { Admin } from "./pages/Admin";
+import { SearchPage } from "./pages/SearchPage";
 import "./App.css";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
 	};
 	const [username, setUsername] = useState();
 	const [roles, setRoles] = useState();
+	const [searchResult, setSearchResult] = useState("");
 
 	return (
 		<Router>
@@ -23,10 +25,14 @@ export default function App() {
 					isLoggedIn={isLoggedIn}
 					username={username}
 					roles={roles}
+					setSearchResult={setSearchResult}
 				/>
 				<Switch>
 					<Route exact path="/">
 						<Home />
+					</Route>
+					<Route exact path="/search">
+						<SearchPage searchString={searchResult.toString()} />
 					</Route>
 					<Route exact path="/user">
 						<User />

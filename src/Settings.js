@@ -1,32 +1,29 @@
 function URLS() {
 	function Login() {
-		const URL = "https://host.hangovergaming.dk/security/api/login";
+		const URL = "https://carolinehoeg.com/exam/api/login";
 		return URL;
 	}
 	function User() {
-		const URL = "https://host.hangovergaming.dk/security/api/info/user";
+		const URL = "https://carolinehoeg.com/exam/api/info/user";
 		return URL;
 	}
 
 	function Admin() {
-		const URL = "https://host.hangovergaming.dk/security/api/info/admin";
+		const URL = "https://carolinehoeg.com/exam/api/info/admin";
 		return URL;
 	}
 
 	function AdminData() {
-		const URL = "https://host.hangovergaming.dk/security/api/fetch";
+		const URL = "https://carolinehoeg.com/exam/api/fetch";
 		return URL;
 	}
 
-	function Dog() {
-		const URL = "https://host.hangovergaming.dk/security/api/fetch/dogpic";
-		return URL;
-	}
-	function Cat() {
-		const URL = "https://host.hangovergaming.dk/security/api/fetch/catpic";
+	function Search(title) {
+		let formattedTitle = title.split(" ").join("%20");
+		const URL = "https://carolinehoeg.com/exam/api/movie-info/" + formattedTitle;
 		return URL;
 	}
 
-	return { Login, User, Admin, AdminData, Dog, Cat };
+	return { Login, User, Admin, AdminData, Search };
 }
 export default new URLS();

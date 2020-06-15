@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import facade from "./apiFacade";
+import facade from "../apiFacade";
 
 export function Login({
 	isLoggedIn,
